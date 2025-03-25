@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Formik } from 'formik';
 import TextInput from "@/constants/TextInput";
 import { FormErrorMessage } from "@/constants/FormErrorMessage";
-import { Button } from "@/constants/Button";
+import { Button } from "@/components/Button";
 
 
 export const LoginScreen = () => {

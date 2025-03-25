@@ -1,10 +1,10 @@
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
+import { AuthenticatedUserProvider } from "@/providers";
 
-export default function RootLayout () {
-  
+export default function RootLayout() {
   return (
-    <Stack>
-          <Stack.Screen name="(AuthStack)" options={{ headerShown: false}}/>
-    </Stack>
+    <AuthenticatedUserProvider>
+      <Slot />
+    </AuthenticatedUserProvider>
   );
-};
+}
