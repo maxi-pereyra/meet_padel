@@ -1,5 +1,5 @@
 import { Slot } from "expo-router";
-import { AuthenticatedUserProvider } from "@/providers";
+import { AuthenticatedUserProvider } from "@/context/AppUserContext";
 
 export default function RootLayout() {
   return (

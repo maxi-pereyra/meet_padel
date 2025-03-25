@@ -1,6 +1,4 @@
 import { Stack } from "expo-router";
-import { Text, View } from "react-native";
-import SignInScreen from "./signIn";
 export default function AuthStack () {
 
   return (

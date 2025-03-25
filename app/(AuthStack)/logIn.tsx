@@ -7,18 +7,25 @@ import { Formik } from 'formik';
 import TextInput from "@/constants/TextInput";
 import { FormErrorMessage } from "@/constants/FormErrorMessage";
 import { Button } from "@/components/Button";
-
-
+import { auth } from "@/config";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { useTogglePasswordVisibility } from "@/hooks/useTogglePasswordVisibility";
+import { useRouter } from "expo-router";
+type User = {
+  email:string,
+  password: string
+}
 export const LoginScreen = () => {
   const [errorState, setErrorState] = useState("");
-  /*const { passwordVisibility, handlePasswordVisibility, rightIcon } =
-     useTogglePasswordVisibility(); */
+  const router = useRouter();
+  const { passwordVisibility, handlePasswordVisibility, rightIcon } =
+     useTogglePasswordVisibility();
 
-  const handleLogin = () => {
-    /* const { email, password } = values;
+  const handleLogin = (values: User) => {
+    const { email, password } = values;
     signInWithEmailAndPassword(auth, email, password).catch((error) =>
       setErrorState(error.message)
-    ); */
+    );
   };
 
   return (
@@ -35,7 +42,7 @@ export const LoginScreen = () => {
               password: "",
             }}
             //validationSchema={loginValidationSchema}
-            onSubmit={(values) => Alert.alert("hanlerLogin")}
+            onSubmit={(values) => handleLogin(values)}
           >
             {({
               values,
@@ -90,7 +97,7 @@ export const LoginScreen = () => {
             style={styles.borderlessButtonContainer}
             borderless
             title={"Create a new account?"}
-            onPress={() => Alert.alert("botn para crear una cuenta") }
+            onPress={()=>router.push("/(AuthStack)/signIn") }
           />
           <Button
             style={styles.borderlessButtonContainer}
